@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style_result.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <div id="box">
+        <img src="{{img_url}}" alt="Profile Picture" style="width:100px">
+        <h1>{{handle}}</h1>
+        <p class="title">{{rank}}</p>
+        <p>{{university}}</p>
+        <p><button>View Profile</button></p>
+    </div>
+    <span>{{handle}}'s expected ratings in the next contest is {{predicted}}</span>
+</body>
+
+</html>

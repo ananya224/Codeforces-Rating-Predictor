@@ -1,0 +1,7 @@
+#logo {
+    background: url('./codeforces_logo.png');
+
+    display: inline-block;
+    height: 100px;
+    width: 500px;
+}
