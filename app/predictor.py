@@ -8,7 +8,7 @@ def predict(handle):
     url = 'https://codeforces.com/contests/with/'
     url += handle
     html_page = requests.get(url)
-    soup = BeautifulSoup(html_page.content)
+    soup = BeautifulSoup(html_page.content, 'html5lib')
 
     table = soup.find('table', attrs = {'class' : 'user-contests-table'})
     # table
