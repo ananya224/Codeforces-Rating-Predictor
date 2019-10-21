@@ -1,11 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-
-def getUniversity(handle):
-    url = 'https://codeforces.com/profile/'
-    url += handle
-    html_page = requests.get(url)
-    soup = BeautifulSoup(html_page.content, 'html5lib')
+def getUniversity(soup, handle):
     filter_1 = soup.find('div', attrs={'class':'main-info'})
     filter_2 = filter_1.findAll('div')
     university = ''
@@ -15,26 +8,15 @@ def getUniversity(handle):
     # print(university)
     return university
 
-def getRank(handle):
-    try:
-        url = 'https://codeforces.com/profile/'
-        url += handle
-        html_page = requests.get(url)
-        soup = BeautifulSoup(html_page.content, 'html5lib')
-        filter_1 = soup.find('div', attrs={'class':'main-info'})
-        filter_2 = filter_1.find('div')
-        filter_3 = filter_2.find('span')
-        rank = filter_3.text
-        print(rank)
-        return rank
-    except:
-        return 'Not Found'
+def getRank(soup, handle):
+    filter_1 = soup.find('div', attrs={'class':'main-info'})
+    filter_2 = filter_1.find('div')
+    filter_3 = filter_2.find('span')
+    rank = filter_3.text
+    print(rank)
+    return rank
 
-def getProfileURL(handle):
-    url = 'https://codeforces.com/profile/'
-    url += handle
-    html_page = requests.get(url)
-    soup = BeautifulSoup(html_page.content, 'html5lib')
+def getProfileURL(soup, handle):
     filter_1 = soup.find('div', attrs={'class': 'title-photo'})
     filter_2 = filter_1.find('div')
     filter_3 = filter_2.find('div')
