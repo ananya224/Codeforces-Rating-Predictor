@@ -5,22 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Result</title>
+    <title>Codeforces Rating Predictor Result</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style_result.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-
-
-    <div id="box">
-        <img src="{{img_url}}" alt="Profile Picture" style="width:100px">
-        <h1>{{handle}}</h1>
-        <p class="title">{{rank}}</p>
-        <p>{{university}}</p>
-        <p><button>View Profile</button></p>
-    </div>
-    <span>{{handle}}'s expected ratings in the next contest is {{predicted}}</span>
+    <section id="left_section">
+        <div id="profile_pic_div">
+            <img id="profile_pic" src="{{img_url}}" alt="Profile Picture">
+            <br><br>
+            <button id="view_profile_btn">View Profile</button>
+        </div>
+        <div id="details">
+            <h1>{{handle}}</h1>
+            <p>{{name}}</p>
+            <p>{{rank}}</p>
+            <p>{{university}}</p>
+            <span>{{handle}}'s expected ratings in the next contest is {{predicted}}</span>
+        </div>
+    </section>
+    <section id="right_section">
+        ~Visualisation goes here~
+    </section>
 </body>
 
 </html>

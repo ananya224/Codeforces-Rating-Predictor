@@ -17,13 +17,14 @@ def home():
             soup = BeautifulSoup(html_page.content, 'html5lib')
             img_url = scrapers.getProfileURL(soup, handle)
             predicted = predictor.predict(handle)
-            university=scrapers.getUniversity(soup, handle)
+            university = scrapers.getUniversity(soup, handle)
             rank=scrapers.getRank(soup, handle)
 
             return render_template('result.html', handle=handle, university=university, rank=rank,
                                                     predicted=predicted, img_url=img_url)
-        except:
+        except Exception as e:
             print("Error fetching the soup")
+            print(str(e))
             return render_template('404.html')
       
     return render_template('index.html')
