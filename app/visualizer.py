@@ -3,8 +3,11 @@ import requests
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import os
+import secrets
 
-def predict(handle):
+def visualize(handle):
     url = 'https://codeforces.com/contests/with/'
     url += handle
     html_page = requests.get(url)
@@ -25,24 +28,25 @@ def predict(handle):
     df.head()
     model = LinearRegression()
     model.fit(idx_df, ratings_df)
-    output = model.predict([[ratings_df.shape[0] + 1]])
-    output = int(output)
-    return output  
+    
 
     # Visualization
 
-    # plt.plot(idx_df, ratings_df)
-    # plt.title('Username : {}'.format(handle))
-    # plt.xlabel('Contest ID')
-    # plt.ylabel('Ratings')
-    # dummy_dataset = pd.DataFrame(np.arange(0, ratings_df.shape[0]))
-    # plt.plot(dummy_dataset, model.predict(dummy_dataset))
-    # plt.savefig()
-
+    plt.plot(idx_df, ratings_df)
+    plt.title('Username : {}'.format(handle))
+    plt.xlabel('Contest ID')
+    plt.ylabel('Ratings')
+    dummy_dataset = pd.DataFrame(np.arange(0, ratings_df.shape[0]))
+    plt.plot(dummy_dataset, model.predict(dummy_dataset))
+    output_filename = secrets.token_hex(16) + '.png'
+    path = os.path.abspath('.') + '/app/static/generated/'
+    plt.savefig(path + output_filename)
+    plt.close()
+    return output_filename
 
 
 
 if __name__ == '__main__':
-    predict('razdeep')
+    visualize('razdeep')
 
 

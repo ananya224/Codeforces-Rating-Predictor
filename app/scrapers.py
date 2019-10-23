@@ -1,3 +1,30 @@
+def getName(soup, handle):
+    try:
+        filter_1 = soup.find('div', attrs={'class': 'main-info'})
+        filter_2 = filter_1.findAll('div')
+        filter_3 = filter_2[1].find('div')
+        name = filter_3.text.split(',')[0]
+        print(name)
+        return name
+    except Exception as e:
+        print('Error while getting name')
+        print(str(e))
+        return 'Not Found'
+
+def getCurrentRatings(soup, handle):
+    try:
+        filter_1 = soup.find('div', attrs={'class': 'info'})
+        filter_2 = filter_1.find('ul')
+        filter_3 = filter_2.find('li')
+        filter_4 = filter_3.find('span')
+        current_ratings = filter_4.text
+        print(current_ratings)
+        return current_ratings
+    except Exception as e:
+        print('Error while getting Ratings')
+        print(str(e))
+        return 'Not Found'
+
 def getUniversity(soup, handle):
     filter_1 = soup.find('div', attrs={'class':'main-info'})
     filter_2 = filter_1.findAll('div')
@@ -27,4 +54,11 @@ def getProfileURL(soup, handle):
     return img_url
 
 if __name__ == '__main__':
-    getProfileURL('razdeep')
+    from bs4 import BeautifulSoup
+    import requests
+    handle = 'razdeep'
+    url = 'https://codeforces.com/profile/'
+    url += handle
+    html_page = requests.get(url)
+    soup = BeautifulSoup(html_page.content, 'html5lib')
+    getCurrentRatings(soup, handle)

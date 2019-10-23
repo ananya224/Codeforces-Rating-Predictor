@@ -16,18 +16,19 @@
         <div id="profile_pic_div">
             <img id="profile_pic" src="{{img_url}}" alt="Profile Picture">
             <br><br>
-            <button id="view_profile_btn">View Profile</button>
+            <a href="{{profile_URL}}" id="view_profile_btn">View Profile</a>
         </div>
         <div id="details">
             <h1>{{handle}}</h1>
             <p>{{name}}</p>
-            <p>{{rank}}</p>
+            <p>Current Ratings : {{current_ratings}}</p>
+            <p>Rank : {{rank}}</p>
             <p>{{university}}</p>
             <span>{{handle}}'s expected ratings in the next contest is {{predicted}}</span>
         </div>
     </section>
     <section id="right_section">
-        ~Visualisation goes here~
+        <img src="{{url_for('static', filename='generated/{}'.format(graph_url))}}" alt="visualization">
     </section>
 </body>
 

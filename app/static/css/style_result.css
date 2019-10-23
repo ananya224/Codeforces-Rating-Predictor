@@ -28,6 +28,7 @@ body {
 }
 
 #view_profile_btn {
+    text-decoration: none;
     color: chartreuse;
     font-weight: bold;
     font-size: 16px;
@@ -51,7 +52,7 @@ body {
 
 #profile_pic {
     border-radius: 50%;
-    background-size: unset;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     width: 150px;

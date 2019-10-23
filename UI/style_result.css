@@ -28,6 +28,7 @@ body {
 }
 
 #view_profile_btn {
+    text-decoration: none;
     color: chartreuse;
     font-weight: bold;
     font-size: 16px;
