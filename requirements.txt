@@ -1,3 +1,5 @@
+gunicorn
+matplotlib
 beautifulsoup4==4.8.1
 numpy==1.17.3
 pandas==0.25.1
