@@ -43,13 +43,14 @@ def visualize(handle):
         plt.plot(dummy_dataset, model.predict(dummy_dataset))
         output_filename = secrets.token_hex(16) + '.png'
         path = os.path.abspath('.') + '/app/static/generated/'
+        os.makedirs(path, exist_ok = True)
         plt.savefig(path + output_filename)
         plt.close()
         return output_filename
-    except:
+    except Exception as e:
         msg = 'Couldn\'t generate graph'
         logger.warning(msg)
-        raise Exception(msg)
+        raise Exception(e)
 
 
 
