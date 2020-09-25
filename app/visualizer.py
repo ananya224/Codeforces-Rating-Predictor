@@ -9,8 +9,8 @@ import secrets
 import logging
 
 def visualize(handle):
+    logger = logging.Logger(__name__)
     try:
-        logger = logging.Logger(__name__)
         url = 'https://codeforces.com/contests/with/'
         url += handle
         html_page = requests.get(url)
@@ -33,7 +33,6 @@ def visualize(handle):
         model = LinearRegression()
         model.fit(idx_df, ratings_df)
 
-
         # Visualization
 
         plt.plot(idx_df, ratings_df)
@@ -48,7 +47,9 @@ def visualize(handle):
         plt.close()
         return output_filename
     except:
-        print()
+        msg = 'Couldn\'t generate graph'
+        logger.warning(msg)
+        raise Exception(msg)
 
 
 
