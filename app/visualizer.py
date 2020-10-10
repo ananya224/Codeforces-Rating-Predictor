@@ -6,10 +6,8 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import os
 import secrets
-import logging
 
 def visualize(handle):
-    logger = logging.Logger(__name__)
     try:
         url = 'https://codeforces.com/contests/with/'
         url += handle
@@ -46,6 +44,7 @@ def visualize(handle):
         os.makedirs(path, exist_ok = True)
         plt.savefig(path + output_filename)
         plt.close()
+        logger.info('visualize() returned: ' + output_filename)
         return output_filename
     except Exception as e:
         msg = 'Couldn\'t generate graph'
