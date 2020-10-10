@@ -9,13 +9,13 @@ import logging
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    logger = logging.Logger(__name__)
     if (request.method == 'POST'):
         handle = request.form.get('handle')
-        # soup = 0
+        logger.info('Handle received from post request: ' + handle)
         try:
             url = 'https://codeforces.com/profile/'
             url += handle
+            logger.info('Profile URL to be fetched: ' + url)
             html_page = requests.get(url)
             logger.info('Codeforces Profile HTML page received through GET')
             soup = BeautifulSoup(html_page.content, 'html5lib')
@@ -39,8 +39,8 @@ def home():
                                                     img_url=img_url,
                                                     graph_url=graph_url)
         except Exception as e:
-            print("Error fetching the soup")
             print(str(e))
+            print("Error fetching the soup")
             return render_template('404.html')
       
     return render_template('index.html')
